@@ -73,7 +73,7 @@ H.264 스트림은 NALU 시퀀스로 이루어져 있고 이에 대한 설명은
 
   - 그러므로 Elementary Stream 경우 데이터를 MPEG-4로 재 포장 해줘야한다. (Iframe/BFrame/PFrame?) 위 동작을 해주는 메서드가 바로 CMVideoFormatDescriptionCreateFromH264ParameterSets() 이다
 
-  - 둘은 또한 헤더에서 차이가 있다. Elementary Stream은 NALU에 3에서 4바이트 스타트 코드를 같는다(00 00 01) 그러나 MPEG-4에서는 4바이트의 길이 코드를 갖는다(00 00 80 00)
+  - 둘은 또한 헤더에서 차이가 있다. Elementary Stream은 NALU에 3에서 4바이트 스타트 코드를 갖는다(00 00 01) 그러나 MPEG-4에서는 4바이트의 길이 코드를 갖는다(00 00 80 00)
 
 
 
