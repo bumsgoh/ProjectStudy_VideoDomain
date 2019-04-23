@@ -1,3 +1,7 @@
+WWDC 2014 Session 513
+
+
+
 AVKit -> AVFoundation -> Video Toolbox -> Core Media -> Core Video
 
 
@@ -63,8 +67,39 @@ H.264 스트림은 NALU 시퀀스로 이루어져 있고 이에 대한 설명은
 
 
 
-Elementary Stream 에서는 Parameter Sets가 스트림 내부에 포함되어 있으며 이와 달리 MPEG-4에서는 Format Description안에 해당  Parameter Sets가 모아져 있다.(CMVideoFormatDescription) 
+- Elementary Stream과  MPEG-4의 차이점
 
-그러므로 Elementary Stream 경우 데이터를 MPEG-4로 재 포장 해줘야한다. (Iframe/BFrame/PFrame?)
+  - Elementary Stream 에서는 Parameter Sets가 스트림 내부에 포함되어 있으며 이와 달리 MPEG-4에서는 Format Description안에 해당  Parameter Sets가 모아져 있다.(CMVideoFormatDescription) 
 
-위 동작을 해주는 메서드가 바로 CMVideoFormatDescriptionCreateFromH264ParameterSets이다
+  - 그러므로 Elementary Stream 경우 데이터를 MPEG-4로 재 포장 해줘야한다. (Iframe/BFrame/PFrame?) 위 동작을 해주는 메서드가 바로 CMVideoFormatDescriptionCreateFromH264ParameterSets() 이다
+
+  - 둘은 또한 헤더에서 차이가 있다. Elementary Stream은 NALU에 3에서 4바이트 스타트 코드를 같는다(00 00 01) 그러나 MPEG-4에서는 4바이트의 길이 코드를 갖는다(00 00 80 00)
+
+
+
+- CMSampleBuffer 만들기
+  1. Elementary Stream 으로 가정하고 00 00 01의 스타트 코드를 가지는 NALU를 가정한다. 이를 길이코드로 바꿔주어야한다. 그 다음 해당하는 모든 NALU를  CMBlockBuffer로 래핑한다.
+  2. CMBlockBuffer가 있으니 Parameter set을 가진 CMVideoFormatDesc와 합친다.
+  3. Presentation Time을 지정한 CMTime을 합친다
+  4. 그 결과는 CMSampleBuffer가 된다. (CMSampleBufferCreate())
+
+
+
+위 결과로 만든 데이터를 디코더에 넣으면 CVPixelBuffer가 된다 그러나 CMTime은 현재 시간을 나타내므로 timebase를 수정하여 스트리밍 시간으로 나타내야한다.(좀 더 공부 필요) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
