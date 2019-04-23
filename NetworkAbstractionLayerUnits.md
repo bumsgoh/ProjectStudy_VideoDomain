@@ -46,3 +46,6 @@ NALU : Network Abstraction Layer Units
 - **Picture Parameter Set (PPS).** SPS와 비슷하게 이 non-VCL 타입은 엔트로피 코딩모드, 슬라이스 그룹, 모션예측 그리고 디블록킹 필터에 관한 정보를 포함한다.
 - **Instantaneous Decoder Refresh (IDR).** 이 VCL NALU 타입은 이미지가 슬라이스된 것 자체이다. 그러니까 IDR은 SPS 나 PPS를 저장한 다른 NALU를 참조하지 않고도 디코드 되고 출력될 수 있다. 
 - **Access Unit Delimiter (AUD).** AUD는 선택적인 NALU로서 로우 스트림에서 프레임 한계치를 정하는데에 사용된다. TS같은 컨테이너나 프로토콜에 언급되지 않는이상 필수적인 요소는 아니며 공간절약을 위해 자주 생략된다. 하지만 모든 NALU를 파싱하지 않고도 시작점은 찾을 수 있다는 점에서 유용하다.
+
+
+출처 : https://stackoverflow.com/questions/24884827/possible-locations-for-sequence-picture-parameter-sets-for-h-264-stream/24890903#24890903
