@@ -120,3 +120,5 @@ Let's look at a complete example.
 
 Annex B는 보통 TS같이 방송되거나 DVD 같은 라이브와 스트리밍 형식으로 사용된다. 이 형식에서 SPS PPS 가 주기적으로 반복되는 것이 일반적이며 보통은 모든 IDR앞에 오게된다. 그라므로 디코더를 위한 랜덤 액세스 포인트가 생성될 수 있는 것이다. 이미 진행되고 있는 스트림에 통합될 수 있는 기능을 이로써 부여할 수 있게된다.
 
+source: https://stackoverflow.com/questions/24884827/possible-locations-for-sequence-picture-parameter-sets-for-h-264-stream/24890903#24890903
+
